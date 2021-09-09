@@ -1,7 +1,7 @@
 <h1>Books</h1>
 
 <!--データ挿入テーブル-->
-<teble>
+<table>
   <thead>
     <tr>
       <th>Title</th>
@@ -9,6 +9,10 @@
       <th colospan="3"></th>
     </tr>
   </thead>
+
+
+
+
   <tbody>
     <tr>
       <td>リーダブルコード</td>
@@ -17,22 +21,57 @@
       <td><a herf="#">Edit</a></td>
       <td><a herf="#">Destroy</a></td>
     </tr>
+    <tr>
+      <td>たのしいRuby</td>
+      <td>Rubyの入門におすすめです</td>
+      <td><a herf="#">Show</a></td>
+      <td><a herf="#">Edit</a></td>
+      <td><a herf="#">Destroy</a></td>
+    </tr>
+    <tr>
+      <td>入門git</td>
+      <td>gitについての基本操作から内部構造まで解説してくれます</td>
+      <td><a herf="#">Show</a></td>
+      <td><a herf="#">Edit</a></td>
+      <td><a herf="#">Destroy</a></td>
+    </tr>
+    <tr>
+      <td>アルゴリズム図鑑</td>
+      <td>アルゴリズムについてカラーイラストでしっかり解説してくれます</td>
+      <td><a herf="#">Show</a></td>
+      <td><a herf="#">Edit</a></td>
+      <td><a herf="#">Destroy</a></td>
+    </tr>
+    <tr>
+      <td>トラブル知らずのシステム設計</td>
+      <td>システム設計の要点を図解で説明してくれます</td>
+      <td><a herf="#">Show</a></td>
+      <td><a herf="#">Edit</a></td>
+      <td><a herf="#">Destroy</a></td>
+    </tr>
 
   </tbody>
-</teble>
+</table>
 
 
 
 <!--新規投稿-->
 <h2>New book</h2>
 <!--form_with-->
-<%= form_with model:@book, local:true do |f| %>
+<%= form_with model:@book, url: '/books/create', local:true do |f| %>
 
-<label for="book_title">Title</label>
-<%= f.text_field :title %>
+<div class="field">
+  <label for="book_title">Title</label>
+  <%= f.text_field :title %>
+</div>
 
-<label for="book_body">Body</label>
-<%= f.text_area :body %>
+<div class="field">
+  <label for="book_body">Body</label>
+  <%= f.text_area :body %>
+</div>
 
-<%= f.submit '投稿' %>
+<div class="actions">
+  <%= f.submit 'Create Book' %>
+</div>
+
 <% end %>
