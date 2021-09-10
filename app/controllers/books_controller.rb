@@ -1,10 +1,10 @@
 class BooksController < ApplicationController
   def index
-    @books = Book.all
+    @books = Book.all.order(created_at: :desc)
   end
 
   def show
-    @book = Book.find(params[:id])
+    @id = Book.find_by(id: params[:id])
   end
 
   def new
@@ -17,7 +17,7 @@ class BooksController < ApplicationController
     # データをデータベースに保存するためのsaveメソッド実行
     book.save
     # index画面へリダイレクト
-    redirect_to book_path(book.id)
+    redirect_to '/books/:id'
   end
 
   def edit
@@ -26,7 +26,7 @@ class BooksController < ApplicationController
   private
   # ストロングパラメータ
   def book_params
-    params.require(:book).permit(:title, :body)
+    params.permit(:title, :body)
   end
 
 
