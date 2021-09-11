@@ -4,8 +4,9 @@ Rails.application.routes.draw do
 
 
   resources :books
-  get "books/:id" => "books#show"
 
   post "books/create" => "books#create"
+  get "books/:id" => "books#show"
+  get "book/:id/edit" => "book#edit"
 
 end
