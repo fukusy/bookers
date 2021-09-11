@@ -16,9 +16,8 @@ class BooksController < ApplicationController
     book = Book.new(book_params)
     # データをデータベースに保存するためのsaveメソッド実行
     book.save
-    # index画面へリダイレクト
-     redirect_to '/books/:id'
-    # book_path(blog.id)
+    # 詳細画面へリダイレクト
+     redirect_to book_path(book.id)
   end
 
   def edit
