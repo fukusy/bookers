@@ -10,12 +10,16 @@ class BooksController < ApplicationController
 
 
   def create
-    # データを新規登録するためのインスタンス作成
-    book = Book.new(book_params)
+    @book = Book.new(book_params)
     # データをデータベースに保存するためのsaveメソッド実行
-    book.save
-    # 詳細画面へリダイレクト
-    redirect_to book_path(book.id)
+    if @book.save
+      # 詳細画面へリダイレクト
+      redirect_to book_path(@book),flash: { notice: 'Book was successfully created.' }
+    else
+      @books = Book.all.order(created_at: :desc)
+      render action: :index
+
+    end
   end
 
   def edit
@@ -23,9 +27,13 @@ class BooksController < ApplicationController
   end
 
   def update
-    book = Book.find(params[:id])
-    book.update(book_params)
-    redirect_to book_path(book.id)
+    @book = Book.find(params[:id])
+    if @book.update(book_params)
+    	redirect_to book_path(@book),flash: { notice: 'Book was successfully updated.' }
+    else
+    	render action: :edit
+
+    end
   end
 
   def destroy

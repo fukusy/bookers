@@ -1,3 +1,18 @@
+<% if flash[:notice] %>
+<p class="notice" role=“alert”>
+    <%= notice %>
+</p>
+<% end %>
+
+<% if @book.errors.any? %>
+<p class="validates">
+  <%= @book.errors.count %>error.</br>
+  <% @book.errors.full_messages.each do |message| %>
+    <%= message %>
+  <% end %>
+</p>
+<% end %>
+
 <h1>Editing Book</h1>
 
 <%= form_with model:@book, local:true do |f| %>

@@ -23,6 +23,15 @@
 </table>
 
 
+<% if @book.errors.any? %>
+<p class="validates">
+  <%= @book.errors.count %>error.</br>
+  <% @book.errors.full_messages.each do |message| %>
+    <%= message %>
+  <% end %>
+</p>
+<% end %>
+
 
 <!--新規投稿-->
 <h2>New book</h2>

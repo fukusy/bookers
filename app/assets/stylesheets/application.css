@@ -71,3 +71,11 @@ td {
 label {
   display: block;
 }
+
+.notice {
+  color: green;
+}
+
+.validates {
+  color: red;
+}
